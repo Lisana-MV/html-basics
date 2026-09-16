@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QNA</title>
+</head>
+<body>
+
+    <h1>Answers</h1>
+
+    <!-- Qn 1 -->
+    <h2>1. Add New Item</h2>
+    <button id="btn1">Add Item</button>
+    <ul id="list1"></ul>
+
+
+    <!-- Qn 2 -->
+    <h2>2. Add and Remove Item</h2>
+    <button id="addBtn">Add Item</button>
+    <button id="removeBtn">Remove Item</button>
+    <ul id="list2"></ul>
+
+
+    <!-- Qn 3 -->
+    <h2>3. Remove Mango using removeChild()</h2>
+
+    <ul id="list3">
+        <li>Apple</li>
+        <li>Orange</li>
+        <li id="mango">Mango</li>
+        <li>Banana</li>
+    </ul>
+
+    <button id="mangoBtn">Remove Mango</button>
+
+
+    <!-- Qn 4 -->
+    <h2>4. Remove Second Item</h2>
+
+    <ul id="list4">
+        <li>Apple</li>
+        <li>Orange</li>
+        <li>Mango</li>
+    </ul>
+
+    <button id="secondBtn">Remove Second Item</button>
+
+
+    <!-- Qn 5 -->
+    <h2>5. Dynamic List using Input</h2>
+
+    <input type="text" id="itemInput" placeholder="Enter item">
+    <button id="inputBtn">Add</button>
+
+    <ul id="list5"></ul>
+
+
+    <script>
+
+        // Qn 1
+        let btn1 = document.getElementById("btn1");
+        let list1 = document.getElementById("list1");
+
+        btn1.addEventListener("click", function() {
+            let li = document.createElement("li");
+            li.innerHTML = "New Item";
+            list1.appendChild(li);
+        });
+
+
+        // Qn 2
+        let addBtn = document.getElementById("addBtn");
+        let removeBtn = document.getElementById("removeBtn");
+        let list2 = document.getElementById("list2");
+
+        addBtn.addEventListener("click", function() {
+            let li = document.createElement("li");
+            li.innerHTML = "New Item";
+            list2.appendChild(li);
+        });
+
+        removeBtn.addEventListener("click", function() {
+            if (list2.lastElementChild) {
+                list2.removeChild(list2.lastElementChild);
+            }
+        });
+
+
+        // Qn 3
+        let mangoBtn = document.getElementById("mangoBtn");
+        let mango = document.getElementById("mango");
+        let list3 = document.getElementById("list3");
+
+        mangoBtn.addEventListener("click", function() {
+            list3.removeChild(mango);
+        });
+
+
+        // Qn 4
+        let secondBtn = document.getElementById("secondBtn");
+        let list4 = document.getElementById("list4");
+
+        secondBtn.addEventListener("click", function() {
+            list4.removeChild(list4.children[1]);
+        });
+
+
+        // Qn 5
+        let inputBtn = document.getElementById("inputBtn");
+        let itemInput = document.getElementById("itemInput");
+        let list5 = document.getElementById("list5");
+
+        inputBtn.addEventListener("click", function() {
+            let li = document.createElement("li");
+            li.innerHTML = itemInput.value;
+
+            list5.appendChild(li);
+
+            itemInput.value = "";
+        });
+
+    </script>
+
+</body>
+</html>

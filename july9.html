@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="july9.js"></script>
+    <style>
+        .text_style {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="demo"></h1>
+    <p class="text">Welcome</p>
+    <p id="text">hy</p>
+    <p id="textcontent">hy</p>
+    <span>Good afternoon</span>
+    <p>one</p>
+    <p>two</p>
+
+    <u1 id="list">
+        <li>apple</li>
+        <li>orange</li>
+    </u1>
+</body>
+<script>
+    let en = document.getElementById("demo");
+    em.innerHTML = "Hello students";
+
+    let para = document.querySelector(".text");
+    console.log(para)
+    let paragra = document.querySelector("#text");
+    console.log(paragra)
+
+    let paragraph = document.querySelector("span");
+    console.log(paragraph)
+
+    let p = document.querySelector("p");
+    console.log(p)
+
+    let p_all = document.querySelectorAll("p");
+    console.log(p_all[3]);
+
+    document.getElementsById("text").innerHTML = "<i>Welcome</i>";
+
+    document.getElementById("textcontent").textContent = "<i>Welcome</i>";
+
+    // classList.add() - adds a css class
+
+    let paraga = dpcument.querySelector(".text");
+
+    paraga.classList.add("text_style");
+
+    paraga.classList.remove("text_style");
+
+    paraga.classList.toggle("text_style");
+
+    // createElement()
+    let heading = document.createElement("h1");
+    heading.textcontent = "Helloo"
+    console.log(heading)
+
+    // appendChild()
+    document.body.appentChild(heading);
+
+    // removeChild()
+
+    let list = documnet.getElementById("list");
+    let item = list.children[1];
+    list.removeChild(item)
+</script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>click, dbclick, input, change, submit, keydown, keyup, mouseover, mouseout, load </p>
+    <input type="text" id="name" placeholder="Enter your name:">
+    <form action="post" id="myForm">
+        <input type="text">
+        <button type="submit">Submit</button>
+    </form>
+    <button id="btn">Click me</button>
+    <div id="parent">
+        <button id="child">
+            darkmode
+        </button>
+    </div>
+</body>
+
+<script>
+    let button = document.getElementById("btn");
+
+    button.addEventListener("click",
+        function(e){
+            console.log(e.type)
+        });
+    let input = document.getElementById("name");
+     input.addEventListener("input",
+         function(){
+            console.log(input.value)
+        });
+    let form = document.getElementById("myForm");
+    form.addEventListener("submit",
+        function(e){
+            e.preventDefault();
+            console.log("Form submitted");
+        });
+
+    document.addEventListener("keydown",
+        function(event){
+            console.log(event.key)
+        });
+
+    let parentbutton = document.getElementById("parent");
+
+    parentbutton.addEventListener("click",
+        function(){
+            console.log("parent")
+        });
+
+    let childbutton = document.getElementById("child");
+
+    childbutton.addEventListener("click",
+        function(e){
+            e.stopPropagation();
+            document.body.style.background="black";
+            document.body.style.color="white";
+            console.log("child")
+        });
+
+</script>
+</html>

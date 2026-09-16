@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+</head>
+<body>
+    <h2>Student Registration Form</h2>
+
+    <form id="studentForm">
+        <input type="text" id="name" placeholder="Student Name"><br><br>
+
+        <input type="email" id="email" placeholder="Email"><br><br>
+
+        <input type="text" id="course" placeholder="Course"><br><br>
+
+        <input type="text" id="phone" placeholder="Phone Number"><br><br>
+
+        <button type="submite">Register</button>
+
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("studentForm")
+        .addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let course = document.getElementById("course").value;
+            let phone = document.getElementById("phone").value;
+
+            localStorage.setItem("name", name);
+            localStorage.setItem("email", email);
+            localStorage.setItem("course", course);
+            localStorage.setItem("phone", phone);
+
+            document.getElementById("result").innerHTML =
+               "Name: " + name + "<br>" +
+               "Email: " + email + "<br>" +
+               "Course: " + course + "<br>" +
+               "Phone: " + phone;
+
+        });
+
+    </script>
+
+    <button type="button" onclick="deleteData()">Delete</button>
+    <button type="button" onclick="updateData()">Update</button>
+
+</body>
+</html>

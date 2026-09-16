@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+<body>
+    <!--1. h1 change -->
+    <h1 id="title">Welcome</h1>
+
+    <!--2. paragraph with innerHTML-->
+    <p id="message">Old message </p>
+
+    <!--3. innerHTML and textContent-->
+    <p id="htmlText"></p>
+    <p id="textContent"></p>
+
+    <!--4. Queryselector-->
+    <p class="text">Paragraph 1</p>
+    <p class="text">Paragraph 2</p>
+    <p class="text">Paragraph 3</p>
+
+    <!--5. querySelectorAll -->
+    <p class="textAll">Text 1</p>
+    <p class="textAll">Text 2</p>
+    <p class="textAll">Text 3</p>
+
+    <!--6. Names -->
+    <p class="name">Ponnu</p>
+    <p class="name">Malu</p>
+    <p class="name">Diya</p>
+
+    <!--9. Existing ul-->
+    <ul id="list">
+        <li>Apple</li>
+        <li>Banana</li>
+    </ul>
+    <script>
+        // 1. Change h1 text
+        document.getElemetById("title").innerHTML = "Welcome to Javascript";
+
+        // 2. change paragraph content using innerHTML
+        document.getElementById("message").innerHTML = "This messege is changed using innerHTML";
+
+        // 3. INNERhtml
+        document.getElementById("textContent").textContent = "<b>Hello Students</b>";
+
+        // 4. querySelector()
+        // Changes only the first paragraph
+        document.querySelector(".text").textContent = "First paragraph changed";
+
+        //5. QuerySelectorAll()
+        // Changes all three paragraphs
+        let allText = document.querySelectorAll(".textAll");
+        allText.forEach(function(paragraph) {
+            paragraph.textContent = "All paragraphs changed";
+        });
+
+        // 6. print all three name elements in console
+        let names = document.querySelectorAll(".name");
+
+        names.forEach(function(name) {
+            console.log(name);
+        });
+
+        //7. create span dynamically
+
+
+        // 8. Create h2 dynamically
+        
+
+        // 9. create new li dynamically
+
+        // 10. create button dynamically
+        let button = document.createElement("button");
+
+        button.textContent = "Click Me";
+        document.body.appendChild(button);
+
+    </script>
+</body>
+</html>

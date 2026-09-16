@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <h2>Login form</h2>
+    <form id="loginForm">
+        <input type="text" id="username" placehlder="Username"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="result"></p>
+</body>
+<script>
+    document.getElementById("loginForm").addEventListener("submit",function (e) {
+        e.preventDefault();
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        localStorage.setItem("username",username);
+        localStorage.setItem("password",password)
+
+        document.getElementById("result").innerHTML = "Username: "+ username +"<br>" +
+          "password: "+password;
+    })
+    
+</script>
+</html>

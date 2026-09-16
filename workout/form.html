@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+</head>
+<body>
+
+    <nav>
+        <button id="homeBtn">Home</button>
+        <button id="aboutBtn">About</button>
+        <button id="contactBtn">Contact</button>
+        <button id="registerBtn">Register</button>
+        <button id="loginBtn">Login</button>
+    </nav>
+
+    <hr>
+
+    <!-- Home -->
+    <div id="home">
+        <h1>Home</h1>
+        <p>Welcome to my website.</p>
+    </div>
+
+
+    <!-- About -->
+    <div id="about" style="display: none;">
+        <h1>About</h1>
+        <p>This is my simple website.</p>
+    </div>
+
+
+    <!-- Contact -->
+    <div id="contact" style="display: none;">
+        <h1>Contact</h1>
+        <p>Email: example@gmail.com</p>
+        <p>Phone: 1234567890</p>
+    </div>
+
+
+    <!-- Register -->
+    <div id="register" style="display: none;">
+        <h1>Register Form</h1>
+
+        <form id="registerForm">
+            <label>Name:</label>
+            <input type="text" id="name">
+            <br><br>
+
+            <label>Email:</label>
+            <input type="email" id="email">
+            <br><br>
+
+            <label>Password:</label>
+            <input type="password" id="password">
+            <br><br>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+
+    <!-- Login -->
+    <div id="login" style="display: none;">
+        <h1>Login Form</h1>
+
+        <form id="loginForm">
+            <label>Email:</label>
+            <input type="email" id="loginEmail">
+            <br><br>
+
+            <label>Password:</label>
+            <input type="password" id="loginPassword">
+            <br><br>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+
+    <script>
+
+        let homeBtn = document.getElementById("homeBtn");
+        let aboutBtn = document.getElementById("aboutBtn");
+        let contactBtn = document.getElementById("contactBtn");
+        let registerBtn = document.getElementById("registerBtn");
+        let loginBtn = document.getElementById("loginBtn");
+
+        let home = document.getElementById("home");
+        let about = document.getElementById("about");
+        let contact = document.getElementById("contact");
+        let register = document.getElementById("register");
+        let login = document.getElementById("login");
+
+
+        homeBtn.addEventListener("click", function() {
+            home.style.display = "block";
+            about.style.display = "none";
+            contact.style.display = "none";
+            register.style.display = "none";
+            login.style.display = "none";
+        });
+
+
+        aboutBtn.addEventListener("click", function() {
+            home.style.display = "none";
+            about.style.display = "block";
+            contact.style.display = "none";
+            register.style.display = "none";
+            login.style.display = "none";
+        });
+
+
+        contactBtn.addEventListener("click", function() {
+            home.style.display = "none";
+            about.style.display = "none";
+            contact.style.display = "block";
+            register.style.display = "none";
+            login.style.display = "none";
+        });
+
+
+        registerBtn.addEventListener("click", function() {
+            home.style.display = "none";
+            about.style.display = "none";
+            contact.style.display = "none";
+            register.style.display = "block";
+            login.style.display = "none";
+        });
+
+
+        loginBtn.addEventListener("click", function() {
+            home.style.display = "none";
+            about.style.display = "none";
+            contact.style.display = "none";
+            register.style.display = "none";
+            login.style.display = "block";
+        });
+
+
+        // Register Form
+        let registerForm = document.getElementById("registerForm");
+
+        registerForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            alert("Registration Successful!");
+        });
+
+
+        // Login Form
+        let loginForm = document.getElementById("loginForm");
+
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            alert("Login Successful!");
+        });
+
+    </script>
+
+</body>
+</html>

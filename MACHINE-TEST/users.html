@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="stylesheet" href="users.css"
+</head>
+<body>
+     <nav>
+        <a href="index.html">Home</a>
+        <a href="signup.html">Signup</a>
+        <a href="users.html">Users</a>
+        <a href="products.html">Products</a>
+    </nav>
+
+    <h1>Registered Users</h1>
+
+    <div id="usersList"></div>
+
+    <script>
+        const userList = document.getElementById("userList");
+
+        function displayUsers() {
+            userList.innerHTML = "";
+            let user = JSON.parse(localstorage.getItem("users")) || [];
+            user.forEach(function(user, index) {
+                const card = document.createElement("div");
+
+                card.innerHTML = `
+                    <h2>${user.name}</h2>
+                    <p>Email: ${user.email}</p>
+                    <p>Phone: ${user.phone}</p>
+                    <button class="deletedBtn">Delete</button>
+                `;
+                const deleteBtn = card.querySelector(".deleteBtn");
+                deleteBtn.addEventListener("click", function() {
+                    user.splice(index, 1);
+
+                    localStorage.setItem("users", JSON.stringify(users));
+                    displayUsers();
+                });
+                userList.appendChild(card);
+
+            });
+            
+        }
+
+        displayUsers();
+    </script>
+</body>
+</html>

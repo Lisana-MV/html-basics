@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="signup.html">Signup</a>
+        <a href="users.html">Users</a>
+        <a href="products.html">Products</a>
+    </nav>
+
+    <h1>Create Account</h1>
+
+    <form id="signupForm">
+        <label>Full Name</label>
+        <input type="text" id="name">
+        <p id="nameError"></p>
+
+        <label>Email</label>
+        <input type="text" id="email">
+        <p id="emailError"></p>
+
+        <label>Phone Number</label>
+        <input type="text" id="phone">
+        <p id="phoneError"></p>
+
+        <label>Password</label>
+        <input type="password" id="password">
+        <p id="passwordError"></p>
+
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword">
+        <p id="confirmPasswordError"></p>
+
+        <button type="submit">Sign Up</button>
+    </form>
+    <script>
+        const form = document.getElementById("signupForm");
+
+        form.addEventListener("submit", function(event) {
+            
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            document.getElementById("nameError").textContent = "";
+            document.getElementById("emailError").textContent = "";
+            document.getElementById("phoneError").textContent = "";
+            document.getElementById("passwordError").textContent = "";
+            document.getElementById("confirmPasswordError").textContent = "";
+
+            let isValid = true;
+
+            //NAME VALIDATION
+            if (name === "") {
+                document.getElementById("nameError").textContent = 
+                    "Name is required";
+                isValid = false;
+            }
+            else if (name.legth <3) {
+                document.getElementById("nameError").textContent =
+                   "Name must be at least 3 charecters";
+                isValid = false;
+            }
+            else if (!/^[A-Za-z ]+$/.test(name)) {
+                document.getElementById("nameError").textContent = 
+                    "Name should contain only letters and spaces";
+                isValid = false;
+            }
+
+            // Email validation
+            const emailPattern = /^[^/s@]+@[+@[^\s@]+\.[^\s@]+$/;
+
+            if (email === "") {
+                document.getElementById("emailError").textContent = 
+                   "Email is required";
+                isValid = false;
+            }
+            else if (!emailPattern.test(email)) {
+                document.getElementById("emailError").textContent = 
+                    "Enter a valid email";
+                isValid = false;
+            }
+
+            // phone validation
+            if (phone === "") {
+                document.getElementById("phoneError").textContent = 
+                    "Phone is required";
+                isValid = false;
+            }
+
+            else if (!/^\d{10}$/.test(phone)) {
+                document.getElementById("phoneError").textContent = 
+                    "Phone must contain exactly 10 digits";
+                isValid = false;
+            }
+
+            // password validation
+            if (password === "") {
+                document.getElementById("passwordError").textContent = 
+                    "Password is required";
+                isValid = false;
+            }
+            else if (password.length <8) {
+                document.getElementById("passwordError").textContent = 
+                    "Password must be at least 8 characters";
+                isValid = false;
+            }
+            else if (!/[A-Z]/.test(password)) {
+                document.getElementById("passwordError").textContent = 
+                    "Password must contain one uppercase letter";
+                isValid = false;
+            }
+            else if (!/[^A-Za-z0-9]/.test(password)) {
+                document.getElementById("passwordError").textContent = 
+                    "Password must containone special charecter";
+                isValid = false;
+            }
+
+            // Confirm password
+            if (confirmPassword === "") {
+                document.getElementById("confirmPasswordError").textContent = "passwords do not match";
+                isValid = false;
+            }
+            
+            // Get existing users
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            //Duplicate email check
+            const emailExists = users.some(function(user) {
+                return user.email === email;
+            });
+
+            if (emailExists) {
+                document.getElementById("emailError").textContent = "Email already registered";
+                isValid = false;
+            }
+
+
+
+            // save user
+            if (isValid) {
+                const newUser = {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    password: password
+                };
+
+                users.push(newUser);
+
+                localStorage.setItem("users", JSON.stringify(users));
+
+                alert("Registration successful!");
+
+                form.reset();
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
